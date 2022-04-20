@@ -1,4 +1,4 @@
-import { ShapType } from "./marco";
+import { ShapType } from "../marco";
 import { Circle } from "./circle";
 
 /**

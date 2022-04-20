@@ -1,4 +1,5 @@
 import { COLORS } from "./marco";
+
 const Graphical = require("graphical");
 
 export class View {

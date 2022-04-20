@@ -1,5 +1,5 @@
 import { Circle } from "./lib/shap/circle";
-import { COLORS } from "./lib/shap/marco";
+import { COLORS } from "./lib/marco";
 
 const Graphical = require("graphical");
 

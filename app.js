@@ -1,7 +1,7 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 var circle_1 = require("./lib/shap/circle");
-var marco_1 = require("./lib/shap/marco");
+var marco_1 = require("./lib/marco");
 var Graphical = require("graphical");
 Graphical.graphical(8111);
 var circle = new circle_1.Circle(100, 100, 100);

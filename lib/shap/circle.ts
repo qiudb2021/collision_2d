@@ -1,5 +1,5 @@
-import { View } from "./view";
-import { COLORS, ShapType } from "./marco";
+import { View } from "../view";
+import { COLORS, ShapType } from "../marco";
 import { Shap } from "./shap";
 
 export class Circle extends Shap {

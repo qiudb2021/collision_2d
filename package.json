@@ -1,0 +1,26 @@
+{
+  "name": "collision_2d",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/qiudb2021/collision_2d.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/qiudb2021/collision_2d/issues"
+  },
+  "homepage": "https://github.com/qiudb2021/collision_2d#readme",
+  "dependencies": {
+    "@types/node": "^17.0.25"
+  },
+  "devDependencies": {
+    "graphical": "^1.0.4"
+  }
+}

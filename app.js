@@ -1,0 +1,12 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+var circle_1 = require("./lib/shap/circle");
+var marco_1 = require("./lib/shap/marco");
+var Graphical = require("graphical");
+Graphical.graphical(8111);
+var circle = new circle_1.Circle(100, 100, 100);
+circle.view(marco_1.COLORS.Black);
+var circle2 = new circle_1.Circle(300, 100, 100);
+circle2.view(marco_1.COLORS.Blue);
+console.log("c1 collide width c2: %j", circle.collidesWith(circle2));
+console.log("c2 collide width c1: %j", circle2.collidesWith(circle));

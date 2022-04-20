@@ -10,4 +10,10 @@ export enum COLORS {
 export enum ShapType {
     Shap = 0,
     Circle,
+    Rectangle
+}
+
+export enum ViewType {
+    Outline = 1,
+    Solid
 }

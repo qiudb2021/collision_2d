@@ -1,5 +1,5 @@
 import { View } from "../view";
-import { COLORS, ShapType } from "../marco";
+import { COLORS, ShapType, ViewType } from "../marco";
 import { Shap } from "./shap";
 
 export class Circle extends Shap {
@@ -14,7 +14,7 @@ export class Circle extends Shap {
         this.r = r;
     }
 
-    public view(color?: COLORS): void {
-        View.drawCircle(this.x, this.y, this.r, color || COLORS.Red);
+    public view(color: COLORS, type: ViewType = ViewType.Solid): void {
+        View.drawCircle(this.x, this.y, this.r, color);
     }
 }

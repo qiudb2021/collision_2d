@@ -17,4 +17,12 @@ export class View {
         circle.setRadius(r);
         circle.setColor(color);
     }
+
+    public static drawRectangle(leftx: number,lefty: number, width: number, height: number, color: COLORS): void {
+        let rectangle = new Graphical.Rectangle();
+        rectangle.setPos(leftx, lefty);
+        rectangle.setSize(width, height);
+        rectangle.setColor(color);
+
+    }
 }

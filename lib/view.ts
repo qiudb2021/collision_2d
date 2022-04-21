@@ -1,4 +1,5 @@
 import { COLORS } from "./marco";
+import { Point } from "./sat/point";
 
 const Graphical = require("graphical");
 
@@ -23,6 +24,16 @@ export class View {
         rectangle.setPos(leftx, lefty);
         rectangle.setSize(width, height);
         rectangle.setColor(color);
+    }
 
+    public static drawPolygon(vertices: Point[], color: COLORS) {
+        let from: Point;
+        let to: Point;
+        let len = vertices.length;
+        for (let i = 0; i < len; i++) {
+            from = vertices[i%len];
+            to = vertices[(i+1)%len]
+            View.drawLine(from.x, from.y, to.x, to.y, color, 1);
+        }
     }
 }

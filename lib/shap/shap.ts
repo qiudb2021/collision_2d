@@ -1,6 +1,7 @@
 import { ShapType, ViewType, COLORS } from "../marco";
 import { Circle } from "./circle";
 import { Rectangle } from "./rectangle";
+import { Polygon } from "./polygon";
 
 /**
  * 碰撞图形基类
@@ -41,5 +42,13 @@ import { Rectangle } from "./rectangle";
             rectA.leftY < rectB.leftY + rectB.height &&
             rectA.leftY + rectA.height > rectB.leftY)
         
+    }
+
+    protected static circleWithRectangle(circle: Circle, rect: Rectangle): boolean {
+        return false;
+    }
+
+    protected static polygonWithPolygon(polygon: Polygon, polygon2: Polygon): boolean {
+        return false;
     }
 };

@@ -2,6 +2,8 @@ import { ShapType, ViewType, COLORS } from "../marco";
 import { Circle } from "./circle";
 import { Rectangle } from "./rectangle";
 import { Polygon } from "./polygon";
+import { SATPolygon } from "../sat/satPolygon";
+import { SAT } from "../sat/sat";
 
 /**
  * 碰撞图形基类
@@ -22,12 +24,16 @@ import { Polygon } from "./polygon";
 
     public collidesWith(shap: Shap): boolean {
         // 圆形与圆形碰撞
-        if (this.isType(ShapType.Circle) && shap.isType(ShapType.Circle)) {
-            return Shap.circleWithCircle(<Circle><unknown>this, <Circle>shap)
-        } else if (this.isType(ShapType.Rectangle) && shap.isType(ShapType.Rectangle)) {
-            return Shap.rectangleWithRectangle(<Rectangle><unknown>this, <Rectangle>shap)
-        }
-        return false;
+        // if (this.isType(ShapType.Circle) && shap.isType(ShapType.Circle)) {
+        //     return Shap.circleWithCircle(<Circle><unknown>this, <Circle>shap)
+        // } else if (this.isType(ShapType.Rectangle) && shap.isType(ShapType.Rectangle)) {
+        //     return Shap.rectangleWithRectangle(<Rectangle><unknown>this, <Rectangle>shap)
+        //     // 多边形碰撞与多边形碰撞：分离轴定理
+        // } else if(this.isType(ShapType.SATPolygon) && shap.isType(ShapType.SATPolygon)) {
+        //     return SAT.collide(<SATPolygon><unknown>this, <SATPolygon>shap);
+        // }
+        // return false;
+        return SAT.collide(<SATPolygon><unknown>this, <SATPolygon>shap);
     }
 
     /** 圆形与圆形碰撞 */
@@ -45,10 +51,6 @@ import { Polygon } from "./polygon";
     }
 
     protected static circleWithRectangle(circle: Circle, rect: Rectangle): boolean {
-        return false;
-    }
-
-    protected static polygonWithPolygon(polygon: Polygon, polygon2: Polygon): boolean {
         return false;
     }
 };

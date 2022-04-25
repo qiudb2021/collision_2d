@@ -13,75 +13,76 @@ export class Vector2d {
         // Vector2d.index++;
     }
 
-    /** 向量相减 */
-    public static substract(v: Vector2d, v2: Vector2d, res?: Vector2d): Vector2d {
+    /** 
+     * 向量相减 - 得到边缘向量
+     * */
+    public static substract(v: Vector2d, v2: Vector2d, result?: Vector2d): Vector2d {
         let x = v.x - v2.x;
         let y = v.y - v2.y;
-        if (res) {
-            res.x = x;
-            res.y = y;
-            return res;
+        if (result) {
+            result.x = x;
+            result.y = y;
+            return result;
         } else {
-            return Vector2d.Create(x, y);
+            return Vector2d.Create(x, y, );
         }
     }
 
-    /** 向量点积 */
+    /** 
+     * 向量点积 
+     * 几何意义之一：一个向量在平行于另一个向量方向上的投影的数值乘积
+     * 此处用来计算出投影的长度
+     * */
     public static dot(v: Vector2d, v2: Vector2d): number {
         return v.x * v2.x + v.y * v2.y;
     }
 
-    /** 向量模长 */
+    /** 向量大小（向量的模），即两点间距离 */
     public length(): number {
         return Math.sqrt(this.x * this.x + this.y * this.y);
     }
 
     /** 获取单位向量 */
-    public normalize(res?: Vector2d): Vector2d {
+    public normalize(isNew: boolean = true): Vector2d {
         let x = 0;
         let y = 0;
         let len = this.length();
         if (len !== 0) {
             x = this.x / len;
             y = this.y / len;
-            if (res) {
-                res.x = x;
-                res.y;
-                return res;
-            } else {
+            if (isNew) {
                 return Vector2d.Create(x, y);
+            } else {
+                this.x = x;
+                this.y = y;
+                return this;
             }
         } else {
-            if (res) {
-                res.x = x;
-                res.y = y;
-                return res;
-            } else {
+            if (isNew) {
                 return Vector2d.Create(x, y);
+            } else {
+                this.x = x;
+                this.y = y;
+                return this;
             }
         }
     }
 
-    /** 边 */
-    public edge(v: Vector2d, res?: Vector2d): Vector2d {
-        return Vector2d.substract(this, v, res);
+    /** 边缘向量 */
+    public edge(v: Vector2d): Vector2d {
+        return Vector2d.substract(this, v);
     }
 
-    /** 法向量 */
-    public perpendicular(res?: Vector2d): Vector2d {
+    /** 当前向量的法向量(x, y) -> (y, -x)或(-y, x) */
+    public perpendicular(isNew: boolean = true): Vector2d {
         let x = this.y;
         let y =  0 - this.x;
-        if (res) {
-            res.x = x;
-            res.y = y;
-            return res;
-        } else {
+        if (isNew) {
             return Vector2d.Create(x, y);
+        } else {
+            this.x = x;
+            this.y = y;
+            return this;
         }
-    }
-
-    /** 获取边缘法向量的单位向量（投影轴） */
-    public normal(res?: Vector2d): Vector2d {
-        return this.perpendicular(res).normalize(res);
     }
 }

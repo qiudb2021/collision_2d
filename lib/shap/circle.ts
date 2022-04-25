@@ -7,8 +7,8 @@ export class Circle extends Shap {
     public y: number;
     public r: number;
 
-    public constructor(x: number, y: number, r: number) {
-        super(ShapType.Circle);
+    public constructor(x: number, y: number, r: number, shapType: ShapType = ShapType.Circle) {
+        super(shapType);
         this.x = x;
         this.y = y;
         this.r = r;
@@ -17,4 +17,5 @@ export class Circle extends Shap {
     public view(color: COLORS, type: ViewType = ViewType.Solid): void {
         View.drawCircle(this.x, this.y, this.r, color);
     }
+
 }

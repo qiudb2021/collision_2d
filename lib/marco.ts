@@ -12,6 +12,8 @@ export enum ShapType {
     Circle,
     Rectangle,
     Polygon,
+    SATCircle,
+    SATPolygon,
 }
 
 export enum ViewType {

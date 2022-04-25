@@ -36,4 +36,14 @@ export class View {
             View.drawLine(from.x, from.y, to.x, to.y, color, 1);
         }
     }
+
+    public static drawText(x: number, y: number, content: string, color: COLORS, size: number): void {
+        let text = new Graphical.Text();
+        text.setText(content);
+        text.setFont("bold " + size + " px Arial");
+        text.setPos(x, y);
+        text.setColor(color)
+        text.setOutlineWidth(1);
+        text.setOutlineColor(color);
+    }
 }

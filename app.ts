@@ -33,10 +33,11 @@ polygon.addVertex(Point.Create(290, 175));
 polygon.addVertex(Point.Create(290, 125));
 // polygon.view(COLORS.Black);
 
+// console.log(polygon.collidesWith(polygon2))
 
 for (let i = 0; i < 10; i++) {
     
-    let count = 1000 * 1000 * 10;
+    let count = 10 * 1000 * 1000;
     console.time("polygon")
     while(count--) {
         // let polygon2 = SATPolygon.Create();

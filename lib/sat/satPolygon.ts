@@ -34,16 +34,58 @@ export class SATPolygon extends Polygon {
 
     /** 计算多边形在投影轴axis上的投影大小 */
     public project(axis: Vector2d, p: Projection, v: Vector2d): void {
-        let scacles: number[] = [];
-        this.vertices.forEach(vertex => {
+        // let scacles: number[] = [];
+        // this.vertices.forEach(vertex => {
+        //     v.x = vertex.x;
+        //     v.y = vertex.y;
+        //     // 各个顶点在投影轴上的投影
+        //     // 投影轴的长度
+        //     scacles.push(Vector2d.dot(v, axis));
+        // });
+
+        // for (let i = 0; i < this.vertices.length; i++) {
+        //     let vertex = this.vertices[i];
+        //     v.x = vertex.x;
+        //     v.y = vertex.y;
+        //     // 各个顶点在投影轴上的投影
+        //     // 投影轴的长度
+        //     scacles.push(Vector2d.dot(v, axis));
+        // }
+
+        // p.min = Math.min.apply(Math, scacles);
+        // p.max = Math.max.apply(Math, scacles);
+
+        // console.log(p);
+    
+        let value: number;
+        let min = 999999999;
+        let max = -999999999
+        // this.vertices.forEach(vertex => {
+        //     v.x = vertex.x;
+        //     v.y = vertex.y;
+        //     // 各个顶点在投影轴上的投影
+        //     // 投影轴的长度
+        //     value = Vector2d.dot(v, axis);
+        //     if (value > max) max = value;
+        //     if (value < min) min = value;
+        // });
+
+        for (let i = 0; i < this.vertices.length; i++) {
+            let vertex = this.vertices[i];
             v.x = vertex.x;
             v.y = vertex.y;
             // 各个顶点在投影轴上的投影
             // 投影轴的长度
-            scacles.push(Vector2d.dot(v, axis));
-        });
+            value = Vector2d.dot(v, axis);
+            if (value > max) max = value;
+            if (value < min) min = value;
+        }
 
-        p.min = Math.min.apply(Math, scacles);
-        p.max = Math.max.apply(Math, scacles);
+        p.min = min;
+        p.max = max;
+        
+        // console.log(p);
+
+
     }
 }

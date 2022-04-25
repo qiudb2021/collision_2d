@@ -25,7 +25,7 @@ polygon.addVertex(point_1.Point.Create(290, 125));
 // polygon.view(COLORS.Black);
 // console.log(polygon.collidesWith(polygon2))
 for (var i = 0; i < 10; i++) {
-    var count = 10 * 1000 * 1000;
+    var count = 100 * 1000 * 1000;
     console.time("polygon");
     while (count--) {
         // let polygon2 = SATPolygon.Create();

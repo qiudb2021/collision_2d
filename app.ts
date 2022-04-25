@@ -37,7 +37,7 @@ polygon.addVertex(Point.Create(290, 125));
 
 for (let i = 0; i < 10; i++) {
     
-    let count = 10 * 1000 * 1000;
+    let count = 100 * 1000 * 1000;
     console.time("polygon")
     while(count--) {
         // let polygon2 = SATPolygon.Create();

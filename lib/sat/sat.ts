@@ -11,6 +11,12 @@ export class SAT {
     }
 
     public static collide(polygonA: SATPolygon, polygonB: SATPolygon): boolean {
+        // 粗略碰撞
+        if (!polygonA.getAABB().collidesWith(polygonB.getAABB())) {
+            // 没有碰撞
+            // console.log("粗略阶段没有碰撞，不需要使用SAT")
+            return false;
+        }
         // 依次获取ploygonA的投影轴，获取polygonA、polygonB在该投影轴上的投影
         let axis: Vector2d = new Vector2d(0, 0);
         // 投影范围

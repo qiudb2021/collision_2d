@@ -70,7 +70,7 @@ function testQT() {
     var h = 1000;
     var qt = QuadTree_1.QuadTree.Create(0, qtRectangle_1.qtRectangle.Create(x, y, w, h));
     // 添加圆形
-    for (var i = 0; i < 10; i++) {
+    for (var i = 0; i < 20; i++) {
         var cx = MathUtil_1.MathUtil.rand(0, w - 100);
         var cy = MathUtil_1.MathUtil.rand(0, h - 100);
         var r = MathUtil_1.MathUtil.rand(10, 40);
@@ -97,6 +97,14 @@ function testQT() {
     polygon.view(marco_1.COLORS.Blue);
     qt.insert(polygon);
     qt.view();
+    var results = [];
+    var bounds = qtRectangle_1.qtRectangle.Create(200, 200, 200, 200);
+    qt.retrieve(results, bounds);
+    bounds.view();
+    results.forEach(function (shap) {
+        shap.view(marco_1.COLORS.Red, marco_1.ViewType.Outline);
+    });
+    console.log("检索结果", results);
     console.log(qt);
 }
 testQT();

@@ -10,6 +10,7 @@ import { SAT } from "./lib/sat/sat";
 import { QuadTree } from "./qt/QuadTree";
 import { qtRectangle } from "./qt/qtRectangle";
 import { MathUtil } from "./lib/MathUtil";
+import { Shap } from "./lib/shap/shap";
 
 const Graphical = require("graphical");
 
@@ -88,7 +89,7 @@ function testQT() {
     let qt = QuadTree.Create(0, qtRectangle.Create(x, y, w, h))
 
     // 添加圆形
-    for (let i = 0; i < 10; i++) {
+    for (let i = 0; i < 20; i++) {
         let cx = MathUtil.rand(0, w - 100);
         let cy = MathUtil.rand(0, h - 100);
         let r = MathUtil.rand(10, 40);
@@ -119,6 +120,16 @@ function testQT() {
     qt.insert(polygon);
     qt.view();
 
+    let results: Shap[] = [];
+    let bounds = qtRectangle.Create(200,200,200,200);
+    qt.retrieve(results, bounds)
+    
+    bounds.view();
+    results.forEach(shap => {
+        shap.view(COLORS.Red, ViewType.Outline);
+    });
+
+    console.log("检索结果", results)
     console.log(qt);
 }
 testQT();

@@ -70,6 +70,22 @@ export class QuadTree {
         }
     }
 
+    /** 检索可能物体 */
+    public retrieve(list: Shap[], bounds: qtRectangle): void {
+        let indexs = this.getIndex(bounds);
+        if (this.nodes.length) {
+            for (let i = 0; i < indexs.length; i++) {
+                this.nodes[indexs[i]].retrieve(list, bounds);
+            }
+        } else {
+            for (let i = 0; i < this.objects.length; i++) {
+                list.push(this.objects[i]);
+            }
+        }
+
+        // todo remove duplicates
+    }
+
     public view(): void {
         let color = this.getColorByLevel();
         if (this.nodes.length) {
@@ -114,6 +130,13 @@ export class QuadTree {
                 y = aabb.lTop.y;
                 width = aabb.rButtom.x - x;
                 height = aabb.rButtom.y - y;
+                break;
+            case ShapType.QTRectangle:
+                let qtRect = <qtRectangle>shap;
+                x = qtRect.x;
+                y = qtRect.y;
+                width = qtRect.w;
+                height = qtRect.h;
                 break;
             default:
                 console.error("no support the shap(%j) add to quadtree", shap);
@@ -180,6 +203,7 @@ export class QuadTree {
 
 
     private getColorByLevel(): COLORS {
+        return COLORS.Black;
         let color: COLORS = COLORS.Black;
         switch (this.level) {
             case 1:

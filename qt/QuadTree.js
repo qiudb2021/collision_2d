@@ -43,6 +43,21 @@ var QuadTree = /** @class */ (function () {
             this.objects = [];
         }
     };
+    /** 检索可能物体 */
+    QuadTree.prototype.retrieve = function (list, bounds) {
+        var indexs = this.getIndex(bounds);
+        if (this.nodes.length) {
+            for (var i = 0; i < indexs.length; i++) {
+                this.nodes[indexs[i]].retrieve(list, bounds);
+            }
+        }
+        else {
+            for (var i = 0; i < this.objects.length; i++) {
+                list.push(this.objects[i]);
+            }
+        }
+        // todo remove duplicates
+    };
     QuadTree.prototype.view = function () {
         var color = this.getColorByLevel();
         if (this.nodes.length) {
@@ -84,6 +99,13 @@ var QuadTree = /** @class */ (function () {
                 width = aabb.rButtom.x - x;
                 height = aabb.rButtom.y - y;
                 break;
+            case marco_1.ShapType.QTRectangle:
+                var qtRect = shap;
+                x = qtRect.x;
+                y = qtRect.y;
+                width = qtRect.w;
+                height = qtRect.h;
+                break;
             default:
                 console.error("no support the shap(%j) add to quadtree", shap);
                 return null;
@@ -119,6 +141,7 @@ var QuadTree = /** @class */ (function () {
         this.nodes[3] = new QuadTree(nextLevel, qtRectangle_1.qtRectangle.Create(x + subWidth, y + subHeight, subWidth, subHeight));
     };
     QuadTree.prototype.getColorByLevel = function () {
+        return marco_1.COLORS.Black;
         var color = marco_1.COLORS.Black;
         switch (this.level) {
             case 1:

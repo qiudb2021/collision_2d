@@ -1,7 +1,8 @@
 # 2D空间中使用四叉树(QuadTree)进行碰撞检测优化
 ## 原文链接
 [Quick Tip: Use Quadtrees to Detect Likely Collisions in 2D Space](https://gamedevelopment.tutsplus.com/tutorials/quick-tip-use-quadtrees-to-detect-likely-collisions-in-2d-space--gamedev-374)
-[2D空间中使用Quadtree四叉树进行碰撞检测优化](2D空间中使用Quadtree四叉树进行碰撞检测优化)
+
+[2D空间中使用Quadtree四叉树进行碰撞检测优化](https://blog.csdn.net/cordova/article/details/53821938)
 ## 思路
 使用四叉树来对碰撞检测进行优化，优化的根本是碰撞检测时跳过哪些明显离得很远的物体，加快检测速度。
 ## 介绍

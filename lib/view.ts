@@ -25,11 +25,17 @@ export class View {
         }
     }
 
-    public static drawRectangle(leftx: number,lefty: number, width: number, height: number, color: COLORS): void {
+    public static drawRectangle(leftx: number,lefty: number, width: number, height: number, color: COLORS, viewType: ViewType = ViewType.Outline): void {
         let rectangle = new Graphical.Rectangle();
         rectangle.setPos(leftx, lefty);
         rectangle.setSize(width, height);
-        rectangle.setColor(color);
+        if (viewType == ViewType.Outline) {
+            rectangle.setOutlineColor(color);
+            rectangle.setOutlineWidth(1);
+            rectangle.setColor("transparent")
+        } else {
+            rectangle.setColor(color);
+        }
     }
 
     public static drawPolygon(vertices: Point[], color: COLORS) {

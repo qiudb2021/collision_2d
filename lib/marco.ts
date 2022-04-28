@@ -5,7 +5,8 @@ export enum COLORS {
     Green = "green",
     Gray = "gray",
     Black = "black",
-    Brown = "brown"
+    Brown = "brown",
+    Purple = "purple"
 }
 
 export enum ShapType {
@@ -15,6 +16,7 @@ export enum ShapType {
     Polygon,
     SATCircle,
     SATPolygon,
+    QTRectangle,
 }
 
 export enum ViewType {

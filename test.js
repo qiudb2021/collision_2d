@@ -28,3 +28,7 @@ function testBit() {
     }
 }
 // testBit()
+
+function testConcat() {
+    return;
+}

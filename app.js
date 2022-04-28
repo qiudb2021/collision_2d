@@ -5,6 +5,9 @@ var rectangle_1 = require("./lib/shap/rectangle");
 var point_1 = require("./lib/sat/point");
 var satPolygon_1 = require("./lib/sat/satPolygon");
 var satCircle_1 = require("./lib/sat/satCircle");
+var QuadTree_1 = require("./qt/QuadTree");
+var qtRectangle_1 = require("./qt/qtRectangle");
+var MathUtil_1 = require("./lib/MathUtil");
 var Graphical = require("graphical");
 Graphical.graphical(8111);
 function testSAT() {
@@ -60,5 +63,42 @@ function testRect() {
     rect2.view(marco_1.COLORS.Black, marco_1.ViewType.Outline);
     console.log(rect.collidesWith(rect2));
 }
+function testQT() {
+    var x = 0;
+    var y = 0;
+    var w = 1000;
+    var h = 1000;
+    var qt = QuadTree_1.QuadTree.Create(0, qtRectangle_1.qtRectangle.Create(x, y, w, h));
+    // 添加圆形
+    for (var i = 0; i < 10; i++) {
+        var cx = MathUtil_1.MathUtil.rand(0, w - 100);
+        var cy = MathUtil_1.MathUtil.rand(0, h - 100);
+        var r = MathUtil_1.MathUtil.rand(10, 40);
+        var circle = satCircle_1.SATCircle.Create(cx, cy, r);
+        qt.insert(circle);
+    }
+    // 添加多边形
+    var polygon2 = satPolygon_1.SATPolygon.Create();
+    polygon2.addVertex(point_1.Point.Create(100, 100));
+    polygon2.addVertex(point_1.Point.Create(50, 150));
+    polygon2.addVertex(point_1.Point.Create(100, 200));
+    polygon2.addVertex(point_1.Point.Create(150, 200));
+    polygon2.addVertex(point_1.Point.Create(200, 150));
+    polygon2.addVertex(point_1.Point.Create(150, 100));
+    qt.insert(polygon2);
+    polygon2.view(marco_1.COLORS.Blue);
+    var polygon = satPolygon_1.SATPolygon.Create();
+    polygon.addVertex(point_1.Point.Create(250 - 10, 75));
+    polygon.addVertex(point_1.Point.Create(200 - 10, 125));
+    polygon.addVertex(point_1.Point.Create(200 - 10, 175));
+    polygon.addVertex(point_1.Point.Create(250 - 10, 225));
+    polygon.addVertex(point_1.Point.Create(300 - 10, 175));
+    polygon.addVertex(point_1.Point.Create(300 - 10, 125));
+    polygon.view(marco_1.COLORS.Blue);
+    qt.insert(polygon);
+    qt.view();
+    console.log(qt);
+}
+testQT();
 // testRect();
-testSAT();
+// testSAT();

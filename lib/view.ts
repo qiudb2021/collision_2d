@@ -1,4 +1,4 @@
-import { COLORS } from "./marco";
+import { COLORS, ViewType } from "./marco";
 import { Point } from "./sat/point";
 
 const Graphical = require("graphical");
@@ -12,11 +12,17 @@ export class View {
         line.setWidth(width);
     }
 
-    public static drawCircle(x: number, y: number, r: number, color: COLORS): void {
+    public static drawCircle(x: number, y: number, r: number, color: COLORS, viewType: ViewType = ViewType.Outline): void {
         let circle = new Graphical.Circle();
         circle.setPos(x, y);
         circle.setRadius(r);
-        circle.setColor(color);
+        if (viewType== ViewType.Outline) {
+            circle.setOutlineColor(color);
+            circle.setOutlineWidth(1);
+            circle.setColor("transparent")
+        } else {
+            circle.setColor(color);
+        }
     }
 
     public static drawRectangle(leftx: number,lefty: number, width: number, height: number, color: COLORS): void {

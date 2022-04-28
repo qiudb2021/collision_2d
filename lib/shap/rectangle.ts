@@ -36,5 +36,6 @@ export class Rectangle extends Shap {
             View.drawLine(this.lTop.x, this.lTop.y, this.rButtom.x, this.lTop.y, color, 1);
 
         }
+        View.drawText(this.lTop.x, this.lTop.y, this.uid + "", color, 8)
     }
 }

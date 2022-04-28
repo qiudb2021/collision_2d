@@ -10,9 +10,12 @@ import { SAT } from "../sat/sat";
  */
  export abstract class Shap {
     public type: ShapType;
+    public uid: number;
+    public static id: number = 1;
 
     public constructor(type: ShapType) {
         this.type = type;
+        this.uid = ++Shap.id;
     }
 
     public abstract view(color: COLORS, type: ViewType): void;

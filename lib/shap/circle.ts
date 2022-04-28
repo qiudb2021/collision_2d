@@ -14,8 +14,9 @@ export class Circle extends Shap {
         this.r = r;
     }
 
-    public view(color: COLORS, type: ViewType = ViewType.Solid): void {
-        View.drawCircle(this.x, this.y, this.r, color);
+    public view(color: COLORS, type: ViewType = ViewType.Outline): void {
+        View.drawCircle(this.x, this.y, this.r, color, type);
+        View.drawText(this.x, this.y, this.uid+"("+ this.x+"," + this.y +")", color, 8);
     }
 
 }

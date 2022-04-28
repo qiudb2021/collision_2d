@@ -4,7 +4,8 @@ export enum COLORS {
     Blue = "blue",
     Green = "green",
     Gray = "gray",
-    Black = "black"
+    Black = "black",
+    Brown = "brown"
 }
 
 export enum ShapType {
